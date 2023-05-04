@@ -1,0 +1,46 @@
+## Abstract Fatory
+
+# O que é:
+É um padrão de projeto criacional que permite que você produza famílias de objetos relacionados sem ter que especificar suas classes concretas.
+Essa categoria é importante pois ela sustenta o princípio mais importante: “programe para interfaces e não para implementações”.
+
+# Por que usar:
+- Quando você não sabe de antemão as dependências e os tipos exatos dos objetos com os quais seu código deve funcionar.
+- Quando você deseja fornecer aos usuários de sua biblioteca ou framework uma maneira de estender suas partes internas de forma segura e não intrusiva.
+- Quando você deseja fornecer várias variantes de um componente ou uma família de componentes.
+
+# Aplicabilidade:
+- Use o padrão Abstract Factory quando seu código precisar trabalhar com várias famílias de produtos relacionados, mas você não quiser depender de classes concretas de produtos.
+- O padrão Abstract Factory fornece a você uma interface para criar objetos de cada classe de uma família de produtos.
+- O código que chama a fábrica de objetos não precisa saber quais das classes de produtos está instanciando.
+- O padrão Abstract Factory pode ser reconhecido por métodos de criação, que retornam uma fábrica de objetos.
+- Em seguida, a fábrica é usada para criar subcomponentes específicos.
+
+# Estrutura:
+![Estrutura](https://refactoring.guru/images/patterns/diagrams/abstract-factory/structure.png)
+
+# Como implementar:
+1. Examine seu código para encontrar um conjunto de tipos de produtos que foram criados para trabalhar com várias famílias de produtos relacionados.
+2. Declare esses tipos de produtos na interface do fábrica abstrata.
+3. Declare a fábrica abstrata com um conjunto de métodos de criação para todos os produtos abstratos.
+4. Implemente um conjunto de classes de fábrica concretas, uma para cada família de produtos.
+5. Crie fábricas de concreto no código inicial do aplicativo, com base em algum critério configurável (por exemplo, parâmetros de configuração ou variáveis ​​de ambiente).
+6. Passe a fábrica concreta para todos os lugares que criam produtos.
+7. Substitua todas as chamadas diretas para construtores de produtos por chamadas para os métodos de criação apropriados na fábrica abstrata.
+
+# Prós e Contras:
+## Prós:
+- Você pode ter certeza de que os produtos que você está recebendo da fábrica são compatíveis entre si.
+- Você evita acoplamento de código de produtos concretos com o código do cliente.
+- Princípio de Responsabilidade Única. Você pode mover o código de criação de produtos existentes para dentro da fábrica.
+- Princípio Aberto / Fechado. Você pode introduzir novas variantes de produtos sem quebrar o código existente do cliente.
+## Contras:
+- O código pode se tornar mais complicado do que deveria ser, uma vez que muitos novos tipos e interfaces são introduzidos junto com o padrão da fábrica.
+- Aplicar o padrão a um código existente pode ser difícil devido à necessidade de introduzir novas classes e interfaces.
+
+
+# Exemplo:
+Imagine que você está criando um simulador de logística. O primeiro componente com o qual você está trabalhando é o gerador de transporte. 
+Existem vários tipos de transporte disponíveis: caminhão, navio e avião. 
+O gerador de transporte é uma classe com um método de criação que retorna um objeto de transporte. 
+Esse método deve ser chamado toda vez que você precisa de um objeto de transporte para enviar uma carga.
