@@ -14,11 +14,11 @@ Projeto implementando Design Patterns em Python, com arquivos contendo:
 Versão do python utilizada:
 Python 3.9.16
 
-Criar o ambiente virtual:
+Criar o ambiente virtual:</br>
 <code>python3 -m venv .venv</code>
 
-Iniciando ambiente virtual:
+Iniciando ambiente virtual:</br>
 <code>source .venv/bin/activate</code>
 
-Desativando ambiente virtual:
+Desativando ambiente virtual:</br>
 <code>deactivate</code>
