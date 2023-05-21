@@ -1,0 +1,64 @@
+## Builder
+
+# O que é:
+É um padrão de projeto de software criacional que permite a separação da construção de um objeto complexo da sua representação, 
+de forma que o mesmo processo de construção possa criar diferentes representações.
+
+# Por que usar:
+- O padrão Builder é usado para criar objetos complexos com partes que precisam ser montadas passo a passo.
+- O padrão Builder permite que você produza diferentes tipos e representações de um objeto usando o mesmo código de construção.
+- O padrão Builder salva o estado de um objeto de construção entre etapas de montagem, permitindo que você retorne ao estado anterior 
+e produza diferentes tipos de objetos com o mesmo código de construção.
+- O padrão Builder permite construir objetos passo a passo, usando apenas aqueles passos que você realmente precisa.
+- O padrão Builder permite que você construa objetos complexos passo a passo. O padrão permite que você produza diferentes tipos e 
+representações de um objeto usando o mesmo código de construção.
+- O padrão Builder elimina a necessidade de criar construtores múltiplos.
+- O padrão Builder fornece controle total sobre o processo de construção de um objeto complexo.
+- O padrão Builder permite que você crie um objeto passo a passo. O padrão Builder permite que você produza diferentes tipos e representações 
+de um objeto usando o mesmo código de construção.
+
+# Aplicabilidade:
+- Use o padrão Builder para obter o controle total sobre a construção de objetos complexos e criar diferentes tipos e representações do mesmo objeto.
+- Use o padrão Builder quando você quiser que seu código seja capaz de criar diferentes representações de algum produto (por exemplo, casas de pedra e madeira).
+- Use o padrão Builder para construir árvores complexas de objetos.
+- Use o padrão Builder para construir um objeto passo a passo, adiando a execução de alguns passos do processo de montagem ou executando-os
+recursivamente.
+
+# Estrutura:
+![Estrutura](https://refactoring.guru/images/patterns/diagrams/builder/structure.png)
+
+# Como implementar:
+1. Verifique se o seu código tem uma classe que pode ser configurada de maneiras diferentes, ou se há várias classes que se encaixam bem
+juntas.
+2. Extraia a interface de construtor da classe do construtor. Certifique-se de que as classes do construtor implementem essa interface.
+3. Crie uma classe de construtor concreta para cada uma das representações do produto e implemente seus métodos de construtor.
+4. Se o seu código já tiver uma lógica de construção para o produto, mova-a para dentro de uma classe de construtor.
+5. Analise o código do cliente e identifique onde os objetos do produto são criados e configurados com as classes do construtor.
+6. Para substituir a criação direta de objetos do produto por chamadas para o construtor, você deve extrair todos os parâmetros de construção
+do código do cliente para uma classe de configuração do construtor.
+7. Altere o código do cliente para criar objetos de construtor e configurá-los com a classe de configuração do construtor.
+8. Quando terminar, verifique se há um método de obtenção na classe de construtor para recuperar o resultado da construção. Se não houver,
+adicione um.
+9. Dependendo do seu caso de uso, você pode expor o método de obtenção diretamente ao cliente ou encapsulá-lo dentro de uma classe do produto.
+10. O cliente deve associar um objeto de construtor com um objeto de diretório. Normalmente, isso é feito apenas uma vez, através de parâmetros
+de construtor ou de um método de configuração.
+11. O cliente deve iniciar a construção através do objeto de construtor, chamando métodos de construção. Normalmente, o cliente pode chamar
+diferentes métodos de construção em qualquer ordem, desde que o resultado da construção seja um produto válido.
+12. O resultado da construção deve ser extraído do objeto de construtor apenas quando a construção estiver concluída e pronta para ser usada.
+12. Observe que, dependendo do seu caso de uso, você pode encapsular o objeto de construtor dentro de um objeto de diretório. Nesse caso, o
+cliente não precisa ter uma referência direta ao objeto de construtor. Em vez disso, ele pode recuperar o resultado da construção do objeto
+de diretório.
+
+# Prós e Contras:
+## Prós:
+- Você pode construir objetos passo a passo, adiando a execução de etapas de construção ou executando-as recursivamente.
+- Você pode reutilizar o mesmo código de construção ao criar várias representações de produtos.
+- Princípio Aberto / Fechado. Você pode implementar novos tipos de construtores sem ter que alterar o código do cliente.
+- Você pode obter mais controle sobre o processo de construção e o resultado final.
+- Princípio de Responsabilidade Única. Você pode isolar o código de construção do produto do código de negócios.
+
+## Contras:
+- O código pode se tornar mais complicado do que deveria ser, uma vez que um cliente deve vincular explicitamente os objetos do construtor
+com os objetos do diretório. Você só pode construir um produto por vez.
+
+# Exemplo:
