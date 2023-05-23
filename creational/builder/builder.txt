@@ -5,24 +5,19 @@
 de forma que o mesmo processo de construção possa criar diferentes representações.
 
 # Por que usar:
-- O padrão Builder é usado para criar objetos complexos com partes que precisam ser montadas passo a passo.
-- O padrão Builder permite que você produza diferentes tipos e representações de um objeto usando o mesmo código de construção.
-- O padrão Builder salva o estado de um objeto de construção entre etapas de montagem, permitindo que você retorne ao estado anterior 
+- É usado para criar objetos complexos com partes que precisam ser montadas passo a passo.
+- Permite que você produza diferentes tipos e representações de um objeto usando o mesmo código de construção.
+- Salva o estado de um objeto de construção entre etapas de montagem, permitindo que você retorne ao estado anterior 
 e produza diferentes tipos de objetos com o mesmo código de construção.
-- O padrão Builder permite construir objetos passo a passo, usando apenas aqueles passos que você realmente precisa.
-- O padrão Builder permite que você construa objetos complexos passo a passo. O padrão permite que você produza diferentes tipos e 
-representações de um objeto usando o mesmo código de construção.
-- O padrão Builder elimina a necessidade de criar construtores múltiplos.
-- O padrão Builder fornece controle total sobre o processo de construção de um objeto complexo.
-- O padrão Builder permite que você crie um objeto passo a passo. O padrão Builder permite que você produza diferentes tipos e representações 
-de um objeto usando o mesmo código de construção.
+- Permite construir objetos passo a passo, usando apenas aqueles passos que você realmente precisa.
+- Elimina a necessidade de criar construtores múltiplos.
+- Fornece controle total sobre o processo de construção de um objeto complexo.
 
 # Aplicabilidade:
 - Use o padrão Builder para obter o controle total sobre a construção de objetos complexos e criar diferentes tipos e representações do mesmo objeto.
 - Use o padrão Builder quando você quiser que seu código seja capaz de criar diferentes representações de algum produto (por exemplo, casas de pedra e madeira).
 - Use o padrão Builder para construir árvores complexas de objetos.
-- Use o padrão Builder para construir um objeto passo a passo, adiando a execução de alguns passos do processo de montagem ou executando-os
-recursivamente.
+- Use o padrão Builder para construir um objeto passo a passo, adiando a execução de alguns passos do processo de montagem ou executando-os recursivamente.
 
 # Estrutura:
 ![Estrutura](https://refactoring.guru/images/patterns/diagrams/builder/structure.png)
@@ -45,7 +40,7 @@ de construtor ou de um método de configuração.
 11. O cliente deve iniciar a construção através do objeto de construtor, chamando métodos de construção. Normalmente, o cliente pode chamar
 diferentes métodos de construção em qualquer ordem, desde que o resultado da construção seja um produto válido.
 12. O resultado da construção deve ser extraído do objeto de construtor apenas quando a construção estiver concluída e pronta para ser usada.
-12. Observe que, dependendo do seu caso de uso, você pode encapsular o objeto de construtor dentro de um objeto de diretório. Nesse caso, o
+12a. Observe que, dependendo do seu caso de uso, você pode encapsular o objeto de construtor dentro de um objeto de diretório. Nesse caso, o
 cliente não precisa ter uma referência direta ao objeto de construtor. Em vez disso, ele pode recuperar o resultado da construção do objeto
 de diretório.
 
@@ -62,3 +57,6 @@ de diretório.
 com os objetos do diretório. Você só pode construir um produto por vez.
 
 # Exemplo:
+Nesse exemplo, o Builder (BuilderHouse) define as etapas básicas para a construção de uma casa, enquanto os construtores concretos (BuilderStone e BuilderWood) 
+implementam essas etapas de acordo com o tipo de material. O Diretor (ConstructionDirector) coordena o processo de construção, usando o builder fornecido para criar a casa. 
+No final, temos duas instâncias de Casa, uma feita de pedra e outra de madeira, cada uma com suas características específicas definidas pelos construtores concretos.
