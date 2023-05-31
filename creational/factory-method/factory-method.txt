@@ -1,0 +1,40 @@
+## Factory Method
+
+# O que é:
+- É um padrão de projeto criacional que permite a criação de objetos sem especificar suas classes exatas.
+- O padrão Factory Method define um método para criar objetos, que pode ser substituído pelas subclasses.
+- O Factory Method permite que uma classe delegue a criação de objetos para subclasses.
+
+# Aplicabilidade:
+- Use o padrão Factory Method quando não souber de antemão os tipos e dependências exatos dos objetos com os quais o código deve funcionar.
+- Use o padrão Factory Method quando quiser fornecer aos usuários de uma biblioteca ou framework a capacidade de estender suas partes internas.
+- Use o padrão Factory Method quando quiser economizar recursos do sistema reutilizando objetos existentes em vez de reconstruí-los.
+
+# Estrutura:
+![Estrutura](https://refactoring.guru/images/patterns/diagrams/factory-method/structure.png)
+
+# Como implementar:
+1. Faça todos os produtos seguirem a mesma interface. Isso tornará mais fácil para o seu código trabalhar com muitos tipos de produtos.
+2. Adicione um método de criação na classe criadora. O tipo de retorno desse método deve corresponder à interface do produto.
+3. Implemente todos os tipos de produtos existentes dentro dos métodos de criação da classe criadora.
+4. O código cliente deve trabalhar tanto com a criadora quanto com os produtos via suas interfaces base. Isso permitirá que você passe quaisquer subclasses da criadora para o código cliente.
+5. Opcionalmente, crie uma classe de fábrica separada que produz objetos de várias subclasses da interface do produto. Então você pode substituir a classe de fábrica dentro do código cliente.
+6. Se você tiver apenas um tipo de produto, pode eliminar a hierarquia de fábrica e a classe de fábrica e chamar o método de criação diretamente da classe do criador.
+7. Se você tiver apenas um tipo de criador, poderá mover o método de criação para a classe do produto.
+8. Por fim, se você tiver apenas um tipo de produto e um tipo de criador, poderá fundir as duas classes em uma única classe.
+
+# Prós e Contras:
+## Prós:
+- Você evita acoplar o código dos produtos às classes concretas do criador.
+- Princípio de Responsabilidade Única. Você pode mover o código de criação de produtos para um lugar único, tornando o código mais fácil de suportar.
+- Princípio Aberto/Fechado. Você pode introduzir novos tipos de produtos na aplicação sem quebrar o código existente do cliente.
+
+## Contras:
+- O código pode se tornar mais complicado, já que você precisa introduzir muitas novas subclasses para implementar o padrão.
+
+# Exemplo:
+Imagine que você está criando um simulador de logística. O primeiro passo do seu algoritmo é escolher o meio de transporte: caminhão, trem, navio ou avião. 
+Nesse ponto, você não sabe qual deles será o escolhido nem as especificidades de cada um. Tudo o que você precisa é de um objeto que seja capaz de entregar a 
+carga até o destino dentro do prazo. Aqui é onde o padrão Factory Method entra em ação. Ele sugere que você substitua chamadas diretas de construção de objetos
+(como new Truck() ou new Ship()) por chamadas de criação de objetos polimórficos (como createTransport()). Agora, quando você herdar novos meios de transporte da
+classe base, não precisará alterar o código do cliente. Basta introduzir a nova classe de transporte e substituir o método de criação nele.

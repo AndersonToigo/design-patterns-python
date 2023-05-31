@@ -1,5 +1,3 @@
-# Implementação do Abstract Factory
-
 from abc import ABC, abstractmethod
 
 
