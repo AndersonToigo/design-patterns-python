@@ -1,0 +1,48 @@
+## Prototype
+
+# O que é:
+É um padrão de criação que permite a clonagem de objetos, mesmo complexos, sem acoplar classes específicas do domínio à classe que os instancia. 
+Ele declara uma interface comum para todos os objetos suportados por uma aplicação (os objetos podem ser produtos finais ou partes deles) 
+e permite a criação de novos objetos copiando um protótipo que é uma instância já inicializada desse objeto.
+
+# Por que usar:
+- Quando o tipo de objetos a serem criados for determinado por uma instância de uma classe, ou seja, por protótipos.
+- Quando a criação de novos objetos por meio de uma classe for ineficiente ou muito complexa.
+- Para evitar a construção de uma hierarquia de classes de fábricas paralela à hierarquia de classes de produtos.
+- Quando instâncias de uma classe puderem ter uma dentre poucas combinações diferentes de estados. Pode ser mais conveniente instalar 
+um número correspondente de protótipos e cloná-los, ao invés de instanciar a classe manualmente, cada vez com um estado apropriado.
+
+# Aplicabilidade:
+- Use o padrão Prototype quando seu código não deve depender de classes concretas de objetos que precisa copiar.
+- Use o padrão quando você quer reduzir o número de subclasses que só diferem na forma como eles inicializam seus respectivos objetos.
+
+# Estrutura:
+![Estrutura](https://refactoring.guru/images/patterns/diagrams/prototype/structure.png)
+
+# Como implementar:
+1. Verifique se a sua aplicação pode se beneficiar de uma estrutura de objetos baseada em protótipos. 
+    - Ela deve ser composta de muitas classes que diferem apenas no estado de seus objetos. 
+    - Classes concretas não devem ser explicitamente mencionadas no código cliente. 
+    - O cliente deve se comunicar com os objetos via uma interface comum.
+2. Declare essa interface no seu código cliente.
+3. Crie uma classe concreta para cada classe existente de produtos. 
+    - Essas classes devem seguir a interface comum declarada anteriormente. 
+    - Implemente o método de clonagem dentro de cada classe concreta.
+4. Em algum lugar do código cliente, substitua todas as chamadas diretas de construção de objetos por chamadas de clonagem no protótipo.
+    - Alternativamente, você pode criar um método auxiliar que encapsula a lógica de clonagem. 
+    - Passe um objeto protótipo para esse método e ele retornará cópias.
+5. O código cliente deve estar pronto para lidar com os objetos clonados como se fossem produtos regulares.
+
+# Prós e Contras:
+## Prós:
+- Você pode clonar objetos sem acoplá-los a suas classes concretas.
+- Você pode obter valores de campos clonados sem executar construtores.
+- Você pode obter objetos complexos copiando protótipos múltiplos e alguns de seus campos.
+- Você pode adicionar e remover objetos protótipos em tempo de execução.
+- O código pode ficar mais simples quando o cliente pode configurar objetos predefinidos a um estado desejado.
+
+## Contras:
+- Clonar objetos complexos que possuem referências circulares pode ser muito complicado.
+
+# Exemplo:
+Arquivo `prototype.py`
