@@ -1,0 +1,34 @@
+## Singleton
+
+# O que é:
+É um padrão de projeto de software, que garante a existência de apenas uma instância de uma classe, mantendo um ponto global de acesso ao seu objeto.
+
+# Por que usar/Aplicabilidade:
+É usado quando é necessário ter um ponto de acesso global a uma instância de uma classe, porém com a necessidade de garantir que apenas uma instância dessa classe exista.
+
+# Estrutura:
+![Estrutura]https://refactoring.guru/images/patterns/diagrams/singleton/structure-pt-br.png
+
+# Como implementar:
+1. Criar uma classe com um construtor privado, para que não seja possível instanciar a classe diretamente.
+2. Criar um método estático que retorna a instância da classe.
+3. Criar uma variável estática privada que armazena a instância da classe.
+4. Criar um método estático que retorna a instância da classe, caso a variável esteja nula, criar uma nova instância e retornar.
+
+# Prós e Contras:
+## Prós:
+- Acesso controlado a instância única.
+- Espaço de nomes reduzido.
+- Permite um número variável de instâncias.
+- Permite refinamento de operações e representação.
+- Mais flexível que operações de classe.
+- Reduz o uso de variáveis globais.
+
+## Contras:
+- Requer tratamento especial em casos de multithreading.
+- Dificulta o teste unitário.
+- Viola o princípio de responsabilidade única.
+- Pode mascarar um mau projeto.
+
+# Exemplo:
+O governo brasileiro possui apenas um presidente, então podemos usar o padrão Singleton para garantir que apenas uma instância da classe Presidente exista.
